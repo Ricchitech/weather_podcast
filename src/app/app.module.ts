@@ -3,16 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { WeatherComponentComponent } from './weather-component/weather-component.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ApicallService } from './apicall.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, WeatherComponentComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ApicallService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

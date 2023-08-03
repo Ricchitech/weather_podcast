@@ -1,0 +1,34 @@
+<h3 class="text-center my-4">Search for Weather:</h3>
+<form [formGroup]="weatherSearchForm" (ngSubmit)="checkWeather(weatherSearchForm.value)">
+  <div class="form-group">
+    <input type="text" class="form-control" id="weatherLocation" placeholder="Please input a location"
+      formControlName="location">
+      <input type="submit" class="submit" value="Search for the weather"/>
+  </div>
+</form>
+
+
+<div class="result" *ngIf="weatherData">
+  <h3 class="">Weather Details:</h3>
+
+  <div class="row">
+    <div class="location">
+      <p class="text-center"><strong>Location :</strong> {{weatherData?.location.name}} </p>
+      <p class="text-center"> <strong>State:</strong> {{weatherData?.location.region}} </p>
+      <p class="text-center"> <strong>Region:</strong> {{weatherData?.location.tz_id}} </p>
+      <p class="text-center"> <strong>Country:</strong> {{weatherData?.location.country}} </p>
+    </div>
+
+    <div class="current">
+      <div class="weather_data"><strong>Current weather condition:</strong>
+        {{weatherData?.current.condition.text}} <img src={{weatherData?.current.condition.icon}} alt="">
+      </div>
+      <p class="text-center"><strong>Temperature in Degrees Celcius: </strong>{{weatherData?.current.feelslike_c}}</p>
+      <p class="text-center"><strong>Feels like in Degrees Faronhete:</strong> {{weatherData?.current.feelslike_f}} </p>
+      <p class="text-center"><strong>humidity:</strong> {{weatherData?.current.humidity}} </p>
+      <p class="text-center"><strong>last updated At:</strong> {{weatherData?.current.last_updated}} </p>
+
+    </div>
+  </div>
+
+</div>
